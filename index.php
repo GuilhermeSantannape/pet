@@ -2,7 +2,7 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
-require_once 'ClienteController.php';
+require_once './controller/ClienteController.php';
 
 require './vendor/autoload.php';
 
