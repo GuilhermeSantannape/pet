@@ -1,61 +1,65 @@
 <?php
-    include_once './class/Raca.php';
-	include_once 'PDOFactory.php';
+require_once './class/Raca.php';
+require_once './dao/RacaDAO.php';
 
-    class ClienteDAO
-    {
-        public function inserir(Raca $raca)
-        {
-            $qInserir = "INSERT INTO raca(desc_raca) VALUES (:desc_raca))";            
-            $pdo = PDOFactory::getConexao();
-            $comando = $pdo->prepare($qInserir);
-            $comando->bindParam(":desc_raca)",$raca->desc_raca));
-            $comando->execute();
-            $raca->id_raca = $pdo->lastInsertId();
-            return $raca;
-        }
+class RacaController{
+    public function listar($request, $response, $args) {
 
-        public function deletar($id_raca)
-        {
-            $qDeletar = "DELETE from raca WHERE id_raca=:id_raca";            
-            $pdo = PDOFactory::getConexao();
-            $comando = $pdo->prepare($qDeletar);
-            $comando->bindParam(":id_raca",$id_raca);
-            $comando->execute();
-        }
-
-        public function atualizar(Raca $raca)
-        {
-            $qAtualizar = "UPDATE raca SET desc_raca=:desc_raca WHERE id_raca=:id_raca";            
-            $pdo = PDOFactory::getConexao();
-            $comando = $pdo->prepare($qAtualizar);
-            $comando->bindParam(":desc_raca",$raca->desc_raca);
-            $comando->bindParam(":id_raca",$raca->id_raca);
-            $comando->execute();        
-        }
-
-        public function listar()
-        {
-		    $query = 'SELECT * FROM raca';
-    		$pdo = PDOFactory::getConexao();
-	    	$comando = $pdo->prepare($query);
-    		$comando->execute();
-            $raca=array();	
-		    while($row = $comando->fetch(PDO::FETCH_OBJ)){
-			    $raca[] = new Raca($row->id_raca,$row->Desc_raca);
-            }
-            return $raca;
-        }
-
-        public function buscarPorId($id_raca)
-        {
- 		    $query = 'SELECT * FROM clientes WHERE id_raca=:id_raca';		
-            $pdo = PDOFactory::getConexao(); 
-		    $comando = $pdo->prepare($query);
-		    $comando->bindParam ('id_raca', $id_raca);
-		    $comando->execute();
-		    $result = $comando->fetch(PDO::FETCH_OBJ);
-		    return new Cliente($result->id_raca,$result->desc_raca);           
-        }
+        $dao = new RacaDAO;    
+        $array_clientes = $dao->listar();        
+        
+        $response = $response->withJson($array_clientes);
+        $response = $response->withHeader('Content-type', 'application/json');    
+        return $response;
     }
+
+
+    public function buscar($request, $response, $args) {
+
+        
+        $id = (int) $args['id'];
+        
+        $dao = new RacaDAO;    
+        $raca = $dao->buscarPorId($id);  
+        
+        $response = $response->withJson($raca);
+        $response = $response->withHeader('Content-type', 'application/json');    
+        return $response;
+    }
+    public function inserir($request, $response, $args) {
+        $var = $request->getParsedBody();
+        $raca = new Raca(0, $var['desc_raca']);
+    
+        $dao = new RacaDAO;    
+        $raca = $dao->inserir($raca);
+    
+        $response = $response->withJson($raca);
+        $response = $response->withHeader('Content-type', 'application/json');    
+        $response = $response->withStatus(201);
+        return $response;
+    }
+    public function atualizar($request, $response, $args) {
+        $id = (int) $args['id'];
+        $var = $request->getParsedBody();
+        $raca = new Raca($id, $var['desc_raca']);
+    
+        $dao = new RacaDAO;    
+        $dao->atualizar($raca);
+    
+        $response = $response->withJson($raca);
+        $response = $response->withHeader('Content-type', 'application/json');    
+        return $response;
+    }
+    public function deletar($request, $response, $args) {
+        $id = (int) $args['id'];
+    
+        $dao = new RacaDAO; 
+        $raca = $dao->buscarPorId($id);   
+        $dao->deletar($id);
+    
+        $response = $response->withJson($raca);
+        $response = $response->withHeader('Content-type', 'application/json');    
+        return $response;
+    }
+}
 ?>

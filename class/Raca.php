@@ -1,11 +1,11 @@
 <?php
     class raca {
-        public $id_raca;
+        public $id;
         public $desc_raca;
         
 
-        function __construct($id_raca, $desc_raca){
-            $this->id_raca = $id_raca;
+        function __construct($id, $desc_raca){
+            $this->id = $id;
             $this->desc_raca = $desc_raca;
            
         }
