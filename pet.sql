@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 10-Out-2018 às 14:49
--- Versão do servidor: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Tempo de geração: 26-Set-2019 às 14:02
+-- Versão do servidor: 10.4.6-MariaDB
+-- versão do PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,8 +19,20 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cervja`
+-- Banco de dados: `pet`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `animais`
+--
+
+CREATE TABLE `animais` (
+  `id_animal` int(11) NOT NULL,
+  `desc_animal` varchar(255) DEFAULT NULL,
+  `id_raca` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -44,121 +56,39 @@ INSERT INTO `clientes` (`id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produtos`
+-- Estrutura da tabela `raca`
 --
 
-CREATE TABLE `produtos` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `preco` float UNSIGNED NOT NULL
+CREATE TABLE `raca` (
+  `id_raca` int(11) NOT NULL,
+  `desc_raca` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `produtos`
---
-
-INSERT INTO `produtos` (`id`, `nome`, `preco`) VALUES
-(1, 'BUD', 8);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `status`
---
-
-CREATE TABLE `status` (
-  `status` varchar(50) NOT NULL,
-  `descricao` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `status`
---
-
-INSERT INTO `status` (`status`, `descricao`) VALUES
-('A', 'aberto'),
-('C', 'Cancelado'),
-('F', 'Finalizado');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `venda`
---
-
-CREATE TABLE `venda` (
-  `codigo` int(10) UNSIGNED NOT NULL,
-  `id` int(11) DEFAULT NULL,
-  `status` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `venda`
---
-
-INSERT INTO `venda` (`codigo`, `id`, `status`) VALUES
-(1, 2, 'A');
-
---
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `clientes`
+-- Índices para tabela `clientes`
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `produtos`
+-- Índices para tabela `raca`
 --
-ALTER TABLE `produtos`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `raca`
+  ADD PRIMARY KEY (`id_raca`);
 
 --
--- Indexes for table `status`
---
-ALTER TABLE `status`
-  ADD PRIMARY KEY (`status`);
-
---
--- Indexes for table `venda`
---
-ALTER TABLE `venda`
-  ADD PRIMARY KEY (`codigo`),
-  ADD KEY `fk_status` (`status`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `clientes`
+-- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `produtos`
---
-ALTER TABLE `produtos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `venda`
---
-ALTER TABLE `venda`
-  MODIFY `codigo` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Constraints for dumped tables
---
-
---
--- Limitadores para a tabela `venda`
---
-ALTER TABLE `venda`
-  ADD CONSTRAINT `fk_status` FOREIGN KEY (`status`) REFERENCES `status` (`status`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
