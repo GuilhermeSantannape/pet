@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Set-2019 às 14:02
+-- Tempo de geração: 26-Set-2019 às 15:53
 -- Versão do servidor: 10.4.6-MariaDB
--- versão do PHP: 7.3.9
+-- versão do PHP: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -65,6 +65,13 @@ CREATE TABLE `raca` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Extraindo dados da tabela `raca`
+--
+
+INSERT INTO `raca` (`id_raca`, `desc_raca`) VALUES
+(3, 'pastor');
+
+--
 -- Índices para tabelas despejadas
 --
 
@@ -88,7 +95,13 @@ ALTER TABLE `raca`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `raca`
+--
+ALTER TABLE `raca`
+  MODIFY `id_raca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
