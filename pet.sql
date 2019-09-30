@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Set-2019 às 15:53
+-- Tempo de geração: 30-Set-2019 às 03:01
 -- Versão do servidor: 10.4.6-MariaDB
 -- versão do PHP: 7.1.32
 
@@ -42,16 +42,19 @@ CREATE TABLE `animais` (
 
 CREATE TABLE `clientes` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nome` varchar(50) NOT NULL
+  `nome` varchar(50) NOT NULL,
+  `status` varchar(1) NOT NULL,
+  `id_animal` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `clientes`
 --
 
-INSERT INTO `clientes` (`id`, `nome`) VALUES
-(1, 'igor'),
-(2, 'anotonio');
+INSERT INTO `clientes` (`id`, `nome`, `status`, `id_animal`) VALUES
+(2, 'anotonio', 'A', '3'),
+(4, 'ele', 'A', '3'),
+(5, 'ROBERTO', 'A', '3');
 
 -- --------------------------------------------------------
 
@@ -69,7 +72,9 @@ CREATE TABLE `raca` (
 --
 
 INSERT INTO `raca` (`id_raca`, `desc_raca`) VALUES
-(3, 'pastor');
+(3, 'salchicha'),
+(5, 'salchicha'),
+(6, 'salchicha');
 
 --
 -- Índices para tabelas despejadas
@@ -95,13 +100,13 @@ ALTER TABLE `raca`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `raca`
 --
 ALTER TABLE `raca`
-  MODIFY `id_raca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_raca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
