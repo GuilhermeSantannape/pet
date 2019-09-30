@@ -1,10 +1,8 @@
 <?php
 require_once './class/Raca.php';
 require_once './dao/RacaDAO.php';
-
 class RacaController{
     public function listar($request, $response, $args) {
-
         $dao = new RacaDAO;    
         $array_clientes = $dao->listar();        
         
@@ -12,10 +10,7 @@ class RacaController{
         $response = $response->withHeader('Content-type', 'application/json');    
         return $response;
     }
-
-
     public function buscar($request, $response, $args) {
-
         
         $id = (int) $args['id'];
         

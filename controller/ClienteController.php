@@ -20,8 +20,7 @@ class ClienteController{
         $id = (int) $args['id'];
         
         $dao = new ClienteDAO;    
-        $cliente = $dao->buscarPorId($id);  
-        
+        $cliente = $dao->buscarPorId($id);
         $response = $response->withJson($cliente);
         $response = $response->withHeader('Content-type', 'application/json');    
         return $response;

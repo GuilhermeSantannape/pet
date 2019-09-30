@@ -42,7 +42,13 @@
     		$comando->execute();
             $clientes=array();	
 		    while($row = $comando->fetch(PDO::FETCH_OBJ)){
-			    $clientes[] = new Cliente($row->id,$row->nome);
+			    $clientes[] = new Cliente(
+                    $row->id,
+                    $row->nome,
+                    $row->id_animal,
+                    $row->status
+
+                    );
             }
             return $clientes;
         }
@@ -55,7 +61,10 @@
 		    $comando->bindParam ('id', $id);
 		    $comando->execute();
 		    $result = $comando->fetch(PDO::FETCH_OBJ);
-		    return new Cliente($result->id,$result->nome);           
+		    return new Cliente($result->id,
+                 $result->nome,
+                $result->id_animal,
+                $result->status );           
         }
     }
 ?>

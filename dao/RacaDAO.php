@@ -11,26 +11,26 @@
             $comando = $pdo->prepare($qInserir);
             $comando->bindParam(":desc_raca",$raca->desc_raca);
             $comando->execute();
-            $raca->id = $pdo->lastInsertId();
+            $raca->id_raca = $pdo->lastInsertid_raca();
             return $raca;
         }
 
-     public function deletar($id)
+     public function deletar($id_raca)
         {
-            $qDeletar = "DELETE from raca WHERE id=:id";            
+            $qDeletar = "DELETE from raca WHERE id_raca=:id_raca";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qDeletar);
-            $comando->bindParam(":id",$id);
+            $comando->bindParam(":id_raca",$id_raca);
             $comando->execute();
         }
 
         public function atualizar(Raca $raca)
         {
-            $qAtualizar = "UPDATE raca SET desc_raca=:desc_raca WHERE id=:id";            
+            $qAtualizar = "UPDATE raca SET desc_raca=:desc_raca WHERE id_raca=:id_raca";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qAtualizar);
             $comando->bindParam(":desc_raca",$raca->desc_raca);
-            $comando->bindParam(":id",$raca->id);
+            $comando->bindParam(":id_raca",$raca->id_raca);
             $comando->execute();        
         }
 
@@ -42,20 +42,24 @@
     		$comando->execute();
             $raca=array();	
 		    while($row = $comando->fetch(PDO::FETCH_OBJ)){
-			   $raca[] = new Raca($row->id,$row->desc_raca);
+			   $raca[] = new Raca(
+                $row->id_raca,
+                $row->desc_raca);
             }
             return $raca;
         }
 
-        public function buscarPorId($id)
+        public function buscarPorid($id_raca)
         {
- 		    $query = 'SELECT * FROM raca WHERE id=:id';		
+ 		    $query = 'SELECT * FROM raca WHERE id_raca=:id_raca';		
             $pdo = PDOFactory::getConexao(); 
 		    $comando = $pdo->prepare($query);
-		    $comando->bindParam ('id', $id);
+		    $comando->bindParam ('id_raca', $id_raca);
 		    $comando->execute();
 		    $result = $comando->fetch(PDO::FETCH_OBJ);
-		    return new Raca($result->id,$result->desc_raca);           
+		    return new Raca(
+                $result->id_raca,
+                $result->desc_raca);           
         }
     }
 ?>
