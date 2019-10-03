@@ -25,7 +25,7 @@ class AnimaisController{
     }
     public function inserir($request, $response, $args) {
         $var = $request->getParsedBody();
-        $animais = new Animais(0, $var['desc_raca']);
+        $animais = new Animais(0, $var['desc_animal'], $var['$id_raca']);
     
         $dao = new AnimaisDAO;    
         $animais = $dao->inserir($animais);
@@ -38,7 +38,7 @@ class AnimaisController{
     public function atualizar($request, $response, $args) {
         $id = (int) $args['id'];
         $var = $request->getParsedBody();
-        $animais = new Animais($id, $var['desc_raca']);
+        $animais = new Animais($id, $var['desc_animal']);
     
         $dao = new AnimaisDAO;    
         $dao->atualizar($animais);
