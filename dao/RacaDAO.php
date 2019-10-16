@@ -11,7 +11,7 @@
             $comando = $pdo->prepare($qInserir);
             $comando->bindParam(":desc_raca",$raca->desc_raca);
             $comando->execute();
-            $raca->id_raca = $pdo->lastInsertid_raca();
+            $raca->id_raca = $pdo->lastInsertid();
             return $raca;
         }
 

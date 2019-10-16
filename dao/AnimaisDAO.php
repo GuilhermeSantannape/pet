@@ -1,5 +1,6 @@
 <?php
     include_once './class/Animais.php';
+    include_once './validar/valida.php';
 	include_once 'PDOFactory.php';
 
     class AnimaisDao
@@ -11,6 +12,7 @@
             $comando = $pdo->prepare($qInserir);
             $comando->bindParam(":nome_animal",$animais->nome_animal);
             $comando->bindParam(":id_raca",$animais->id_raca);
+            echo($animais->id_raca);
             $comando->execute();
             $animais->id_animal = $pdo->lastInsertid();
             return $animais;
@@ -45,7 +47,6 @@
 		    while($row = $comando->fetch(PDO::FETCH_OBJ)){
 			   $animais[] = new Animais(
                 $row->id_animal,
-               
                 $row->id_raca,
              $row->nome_animal);
             }

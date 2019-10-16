@@ -64,10 +64,24 @@ $app->group('/animais', function(){
 });
 
 
+$app->post("/auth", "UsuarioController:autenticar");
+
+// agrupamento para organizar o web service chamando os métodos do controller
+$app->group("/produtos",
+    function () {
+        $this->get("", "ProdutoController:listar");
+        $this->get("/{id:[0-9]+}", "ProdutoController:buscarPorId");
+        $this->post("", "ProdutoController:inserir");
+        $this->put("/{id:[0-9]+}", "ProdutoController:atualizar");
+        $this->delete("/{id:[0-9]+}", "ProdutoController:deletar");
+    })
+->add('UsuarioController:validarToken');
+
+
 
 
 
 
 
 $app->run();
-?>no
+?> 
