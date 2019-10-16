@@ -27,7 +27,7 @@ class ClienteController{
     }
     public function inserir($request, $response, $args) {
         $var = $request->getParsedBody();
-        $cliente = new Cliente(0, $var['nome']);
+        $cliente = new Cliente(0, $var['nome'],$var['status']);
     
         $dao = new ClienteDAO;    
         $cliente = $dao->inserir($cliente);
@@ -40,8 +40,7 @@ class ClienteController{
     public function atualizar($request, $response, $args) {
         $id = (int) $args['id'];
         $var = $request->getParsedBody();
-        $cliente = new Cliente($id, $var['nome']);
-    
+        $cliente = new Cliente($id, $var['nome'],$var['status']);
         $dao = new ClienteDAO;    
         $dao->atualizar($cliente);
     

@@ -1,17 +1,19 @@
 <?php
     include_once './class/Cliente.php';
+    include_once './validar/valida.php';
 	include_once 'PDOFactory.php';
 
     class ClienteDAO
     {
         public function inserir(Cliente $cliente)
         {
-            $qInserir = "INSERT INTO clientes(nome) VALUES (:nome)";            
+            $qInserir = "INSERT INTO clientes(nome) VALUES (:nome)";
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qInserir);
             $comando->bindParam(":nome",$cliente->nome);
             $comando->execute();
-            $cliente->id = $pdo->lastInsertId();
+            $cliente->id = $pdo->lastInsertid();
+            Ativastatus($cliente->id);
             return $cliente;
         }
 
@@ -26,19 +28,24 @@
 
         public function atualizar(Cliente $cliente)
         {
-            $qAtualizar = "UPDATE clientes SET nome=:nome,status=:status WHERE id=:id";            
+            $qAtualizar = "UPDATE clientes SET nome=:nome,status=:status WHERE id=:id";
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qAtualizar);
-            $comando->bindParam(":nome",$cliente->nome);
             $comando->bindParam(":id",$cliente->id);
-             $comando->bindParam(":status",$cliente->status);
+            $comando->bindParam(":nome",$cliente->nome);
+            $comando->bindParam(":status",$cliente->status);
             $comando->execute();        
-        }
+            
+          
+        }  
+
+
+     
 
         public function listar()
         {
 		    $query = 'SELECT * FROM clientes';
-    		$pdo = PDOFactory::getConexao();
+             $pdo = PDOFactory::getConexao();
 	    	$comando = $pdo->prepare($query);
     		$comando->execute();
             $clientes=array();	
@@ -63,5 +70,9 @@
                  $result->nome,
                 $result->status );           
         }
+
+
+
+       
     }
 ?>

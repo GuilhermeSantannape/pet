@@ -6,13 +6,13 @@
     {
         public function inserir(Animais $animais)
         {
-            $qInserir = "INSERT INTO animais(desc_animal, id_raca) VALUES (:desc_animal, :id_raca)";            
+            $qInserir = "INSERT INTO animais(nome_animal, id_raca) VALUES (:nome_animal, :id_raca)";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qInserir);
-            $comando->bindParam(":desc_animal",$animais->desc_animal);
+            $comando->bindParam(":nome_animal",$animais->nome_animal);
             $comando->bindParam(":id_raca",$animais->id_raca);
             $comando->execute();
-            $animais->id_animal = $pdo->lastInsertid_animal();
+            $animais->id_animal = $pdo->lastInsertid();
             return $animais;
         }
 
@@ -27,10 +27,10 @@
 
         public function atualizar(Animais $animais)
         {
-            $qAtualizar = "UPDATE animais SET desc_animal=:desc_animal WHERE id_animal=:id_animal";            
+            $qAtualizar = "UPDATE animais SET nome_animal=:nome_animal WHERE id_animal=:id_animal";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qAtualizar);
-            $comando->bindParam(":desc_animal",$animais->desc_animal);
+            $comando->bindParam(":nome_animal",$animais->nome_animal);
             $comando->bindParam(":id_animal",$animais->id_animal);
             $comando->execute();        
         }
@@ -45,8 +45,9 @@
 		    while($row = $comando->fetch(PDO::FETCH_OBJ)){
 			   $animais[] = new Animais(
                 $row->id_animal,
-                $row->desc_animal,
-                $row->id_raca);
+               
+                $row->id_raca,
+             $row->nome_animal);
             }
             return $animais;
         }
@@ -61,8 +62,8 @@
 		    $result = $comando->fetch(PDO::FETCH_OBJ);
 		    return new Animais(
                 $result->id_animal,
-                $result->desc_animal,
-                $result->id_raca);           
+                $result->id_raca,
+                    $result->nome_animal,);           
         }
     }
 ?>

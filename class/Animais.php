@@ -3,14 +3,14 @@
 
         public $id_animal;
         public $id_raca;
-        public $desc_animal;
+        public $nome_animal;
         
 
-        function __construct($id_animal, $id_raca, $desc_animal){
+        function __construct($id_animal, $id_raca, $nome_animal){
 
             $this->id_animal = $id_animal;
             $this->id_raca = $id_raca;
-            $this->desc_animal = $desc_animal;
+            $this->nome_animal = $nome_animal;
            
         }
     }
