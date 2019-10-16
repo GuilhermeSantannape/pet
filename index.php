@@ -5,6 +5,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 require_once './controller/ClienteController.php';
 require './controller/RacaController.php';
 require './controller/AnimaisController.php';
+require './controller/Cliente_animalController.php';
 
 require './vendor/autoload.php';
 
@@ -26,6 +27,17 @@ $app->group('/clientes', function(){
     
 });
 
+$app->group('/cliente_animal', function(){
+
+    // usa como endereço para chamar controler que estão em outra classe
+    $this->get('','Cliente_animalController:listar');
+    $this->post('','Cliente_animalController:inserir');
+
+    $this->get('/{id:[0-9]+}','Cliente_animalController:buscar');
+    $this->put('/{id:[0-9]+}','Cliente_animalController:atualizar');
+    $this->delete('/{id:[0-9]+}','Cliente_animalController:deletar');
+    
+});
 
 $app->group('/raca', function(){
 

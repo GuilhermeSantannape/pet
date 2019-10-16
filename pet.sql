@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07-Out-2019 às 00:10
+-- Tempo de geração: 16-Out-2019 às 07:47
 -- Versão do servidor: 10.4.6-MariaDB
--- versão do PHP: 7.1.32
+-- versão do PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `animais` (
   `id_animal` int(11) NOT NULL,
-  `desc_animal` varchar(255) DEFAULT NULL,
+  `nome_animal` varchar(255) DEFAULT NULL,
   `id_raca` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -43,8 +43,25 @@ CREATE TABLE `animais` (
 CREATE TABLE `clientes` (
   `id` int(10) UNSIGNED NOT NULL,
   `nome` varchar(50) NOT NULL,
-  `status` varchar(1) NOT NULL,
-  `id_animal` int(11) NOT NULL
+  `status` varchar(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `clientes`
+--
+
+INSERT INTO `clientes` (`id`, `nome`, `status`) VALUES
+(1, 'santanna', 'I');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cliente_animal`
+--
+
+CREATE TABLE `cliente_animal` (
+  `id` int(11) DEFAULT NULL,
+  `id_animal` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -57,6 +74,13 @@ CREATE TABLE `raca` (
   `id_raca` int(11) NOT NULL,
   `desc_raca` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `raca`
+--
+
+INSERT INTO `raca` (`id_raca`, `desc_raca`) VALUES
+(1, 'dog');
 
 -- --------------------------------------------------------
 
@@ -86,6 +110,13 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nome`, `login`, `senha`) VALUES
+(1, 'santanna', 'guilherme', '131092');
+
+--
 -- Índices para tabelas despejadas
 --
 
@@ -100,8 +131,7 @@ ALTER TABLE `animais`
 -- Índices para tabela `clientes`
 --
 ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_animal` (`id_animal`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `raca`
@@ -155,7 +185,7 @@ ALTER TABLE `tokens`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para despejos de tabelas
@@ -168,10 +198,10 @@ ALTER TABLE `animais`
   ADD CONSTRAINT `id_raca` FOREIGN KEY (`id_raca`) REFERENCES `raca` (`id_raca`);
 
 --
--- Limitadores para a tabela `clientes`
+-- Limitadores para a tabela `cliente_animal`
 --
-ALTER TABLE `clientes`
-  ADD CONSTRAINT `id_animal` FOREIGN KEY (`id_animal`) REFERENCES `animais` (`id_animal`);
+ALTER TABLE `cliente_animal`
+  ADD CONSTRAINT `fk_animal` FOREIGN KEY (`id_animal`) REFERENCES `animais` (`id_animal`);
 
 --
 -- Limitadores para a tabela `tokens`

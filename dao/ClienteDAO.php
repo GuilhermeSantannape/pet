@@ -17,7 +17,7 @@
 
         public function deletar($id)
         {
-            $qDeletar = "DELETE from clientes WHERE id=:id";            
+            $qDeletar = "UPDATE clientes set status='I' WHERE id=:id";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qDeletar);
             $comando->bindParam(":id",$id);
@@ -26,11 +26,12 @@
 
         public function atualizar(Cliente $cliente)
         {
-            $qAtualizar = "UPDATE clientes SET nome=:nome WHERE id=:id";            
+            $qAtualizar = "UPDATE clientes SET nome=:nome,status=:status WHERE id=:id";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qAtualizar);
             $comando->bindParam(":nome",$cliente->nome);
             $comando->bindParam(":id",$cliente->id);
+             $comando->bindParam(":status",$cliente->status);
             $comando->execute();        
         }
 
@@ -45,10 +46,7 @@
 			    $clientes[] = new Cliente(
                     $row->id,
                     $row->nome,
-                    $row->id_animal,
-                    $row->status
-
-                    );
+                    $row->status);
             }
             return $clientes;
         }
@@ -63,7 +61,6 @@
 		    $result = $comando->fetch(PDO::FETCH_OBJ);
 		    return new Cliente($result->id,
                  $result->nome,
-                $result->id_animal,
                 $result->status );           
         }
     }
