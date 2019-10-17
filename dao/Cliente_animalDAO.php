@@ -11,11 +11,6 @@
             $comando = $pdo->prepare($qInserir);
             $comando->bindParam(":id",$cliente_animais->id);
             $comando->bindParam(":id_animal",$cliente_animais->id_animal);
-            if($cliente_animais->id_animal=="null"){
-                return($response = $response->withStatus(304)
-            );
-
-            }
             $comando->execute();
      
             return $cliente_animais;

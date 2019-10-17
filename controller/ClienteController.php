@@ -46,6 +46,7 @@ class ClienteController{
     
         $response = $response->withJson($cliente);
         $response = $response->withHeader('Content-type', 'application/json');    
+         $response = $response->withStatus(200);
         return $response;
     }
     public function deletar($request, $response, $args) {

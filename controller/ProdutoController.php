@@ -38,6 +38,7 @@ class ProdutoController {
         $dao->atualizar($produto);
         $resp = $resp->withJson($produto);
         $resp = $resp->withHeader("Content-type", "application/json");
+         $response = $response->withStatus(200);
         return $resp;
     }
 

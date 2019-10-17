@@ -50,26 +50,30 @@ class UsuarioController {
 
     public function validarToken($req, $resp, $next)
     {   
-        $token = str_replace("Bearer ", "", $req->getHeader('Authorization')[0]);
 
-        if($token)
-        {
+        if($req->getHeader('Authorization')[0] == null) {
+             return $resp->withStatus(401);
+        } else {
 
-            echo $this->secretkey;
-            try {
-                $decoded = JWT::decode($token, $this->secretkey, array('HS256'));
-
-                if($decoded)
-                    return($next($req, $resp));
-
-            } catch(Exception $error) {
+            $token = str_replace("Bearer ", "", $req->getHeader('Authorization')[0]);
+        
+            if($token)
+            {
+                try {
+                    $decoded = JWT::decode($token, $this->secretkey, array('HS256'));
+    
+                    if($decoded)
+                        return($next($req, $resp));
+    
+                } catch(Exception $error) {
+                    return $resp->withStatus(401);
+                }
                 return $resp->withStatus(401);
+    
             }
-            return $resp->withStatus(401);
-
+              
         }
-          
-            }
-
+    }
+        
 }
 ?>

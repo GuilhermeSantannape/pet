@@ -36,7 +36,7 @@ class AnimaisController{
     public function atualizar($request, $response, $args) {
         $id = (int) $args['id'];
         $var = $request->getParsedBody();
-        $animais = new Animais($id, $var['nome_animal']);
+        $animais = new Animais($id,$var['id_raca'], $var['nome_animal']);
     
         $dao = new AnimaisDAO;    
         $dao->atualizar($animais);

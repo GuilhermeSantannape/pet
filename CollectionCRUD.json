@@ -1,0 +1,1144 @@
+{
+	"info": {
+		"_postman_id": "ff8cbdfe-d1f0-4697-b727-f27d620be419",
+		"name": "Crud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost/pet/clientes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n     {\r\n        \"id_animal\": 2,\r\n        \"id_raca\": 1,\r\n        \"nome_animal\": \"nana\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/clientes",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"clientes"
+					]
+				},
+				"description": "Get clientes"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/clientes/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \r\n\t\"nome\": \"Coleira\",\r\n\t\"preco\": 10\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/clientes/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"clientes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/clientes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n       \r\n        \"nome\": \"santanna\",\r\n        \"status\": \"I\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/clientes",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"clientes"
+					]
+				},
+				"description": "Put Cliente"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/clientes/1",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/clientes/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"clientes",
+						"1"
+					]
+				},
+				"description": "Deleta cliente"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/clientes/1",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"nome\": \"marcelo\",\r\n    \"status\":\"i\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/clientes/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"clientes",
+						"1"
+					]
+				},
+				"description": "Get Cliente especifico"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/animais",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n     {\r\n        \"id_animal\": 2,\r\n        \"id_raca\": 1,\r\n        \"nome_animal\": \"nana\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/animais",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"animais"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/animais/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \r\n\t\"nome\": \"Coleira\",\r\n\t\"preco\": 10\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/animais/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"animais",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/animais",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id_raca\": 1,\r\n        \"nome_animal\": \"dogao\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/animais",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"animais"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/animais/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id_raca\": 1,\r\n        \"nome_animal\": \"kaof\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/animais/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"animais",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/animais/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id_raca\": 1,\r\n        \"nome_animal\": \"kaof\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/animais/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"animais",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/raca",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"desc_raca\": \"pastor\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/raca",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"raca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/raca",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"desc_raca\": \"pastor\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/raca",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"raca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/raca/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \r\n\t\"nome\": \"Coleira\",\r\n\t\"preco\": 10\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/raca/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"raca",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/raca/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"desc_raca\": \"loas\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/raca/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"raca",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/raca/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"desc_raca\": \"loas\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/raca/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"raca",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/cliente_animal",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"desc_raca\": \"loas\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/cliente_animal",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"cliente_animal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/cliente_animal/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \r\n\t\"nome\": \"Coleira\",\r\n\t\"preco\": 10\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/cliente_animal/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"cliente_animal",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/cliente_animal",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \r\n\t\"id\": 1,\r\n\t\"id_animal\": 1\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/cliente_animal",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"cliente_animal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/cliente_animal/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \r\n\t\"id\": 2,\r\n\t\"id_animal\": 2\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/cliente_animal/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"cliente_animal",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/cliente_animal/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \r\n\t\"id\": 2,\r\n\t\"id_animal\": 2\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/cliente_animal/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"cliente_animal",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/produtos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \r\n\t\"id\": 2,\r\n\t\"id_animal\": 2\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/produtos",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"produtos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/produtos/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \r\n\t\"nome\": \"Coleira\",\r\n\t\"preco\": 10\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/produtos/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"produtos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/produtos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \r\n\t\"nome\": \"Bala\",\r\n\t\"preco\": 10\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/produtos",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"produtos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/produtos/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \r\n\t\"nome\": \"Coleira\",\r\n\t\"preco\": 10\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/produtos/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"produtos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost/pet/produtos/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvX2lkIjoxLCJ1c3VhcmlvX25vbWUiOiJzYW50YW5uYSJ9.Dchn2wPoRf2svgxS-IxBlRcHvvJybcQPBLBu6SIYWQo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \r\n\t\"nome\": \"Coleira\",\r\n\t\"preco\": 10\r\n\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/pet/produtos/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"pet",
+						"produtos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

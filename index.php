@@ -10,18 +10,21 @@ require './controller/Cliente_animalController.php';
 
 require './vendor/autoload.php';
 
+$config = [
+    'settings'             => [
+        'displayErrorDetails' => true,
+        'addContentLengthHeader' => false
+    ],
+];
 
 //$app = new \Slim\App;
-$app = new \Slim\App(['settings' => ['displayErrorDetails' => true]]);
-
-
+$app = new \Slim\App($config);
 
 $app->group('/clientes', function(){
 
 	// usa como endereço para chamar controler que estão em outra classe
     $this->get('','ClienteController:listar');
     $this->post('','ClienteController:inserir');
-
     $this->get('/{id:[0-9]+}','ClienteController:buscar');
     $this->put('/{id:[0-9]+}','ClienteController:atualizar');
     $this->delete('/{id:[0-9]+}','ClienteController:deletar');
