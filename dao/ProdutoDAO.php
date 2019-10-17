@@ -13,19 +13,19 @@
         $comando->execute();
         $produtos = array();
         while ($row = $comando->fetch(PDO::FETCH_OBJ)) {
-          $produtos[] = new Produto($row->id, $row->nome, $row->preco);
+          $produtos[] = new Produto($row->ean, $row->nome, $row->preco);
         }
         return $produtos;
     }
 
-    public function buscarPorId($id) {
+    public function buscarPorId($ean) {
       $pdo = PDOFactory::getConexao();
-      $query = "SELECT * FROM produtos WHERE id = :id";
+      $query = "SELECT * FROM produtos WHERE ean = :ean";
       $comando = $pdo->prepare($query);
-      $comando->bindParam("id", $id);
+      $comando->bindParam("ean", $ean);
       $comando->execute();
       $resultado = $comando->fetch(PDO::FETCH_OBJ);
-      return new Produto($resultado->id,$resultado->nome,$resultado->preco);
+      return new Produto($resultado->ean,$resultado->nome,$resultado->preco);
     }
 
     public function inserir(Produto $produto) {
@@ -35,28 +35,28 @@
       $comando->bindParam(":nome", $produto->nome);
       $comando->bindParam(":preco", $produto->preco);
       $comando->execute();
-      $produto->id = $pdo->lastInsertId();
+      $produto->ean = $pdo->lastInsertId();
       return $produto;
     }
 
     public function atualizar(Produto $produto) {
-      $query = "UPDATE produtos SET nome=:nome , preco=:preco WHERE id=:id";
+      $query = "UPDATE produtos SET nome=:nome , preco=:preco WHERE ean=:ean";
       $pdo = PDOFactory::getConexao();
       $comando = $pdo->prepare($query);
-      $comando->bindParam(":id", $produto->id);
+      $comando->bindParam(":ean", $produto->ean);
       $comando->bindParam(":nome", $produto->nome);
       $comando->bindParam(":preco", $produto->preco);
       $comando->execute();
       return $produto;
     }
 
-    public function deletar($id) {
-      $query = "DELETE FROM produtos WHERE id=:id";
+    public function deletar($ean) {
+      $query = "DELETE FROM produtos WHERE ean=:ean";
       $pdo = PDOFactory::getConexao();
       $comando = $pdo->prepare($query);
-      $comando->bindParam(":id", $id);
+      $comando->bindParam(":ean", $ean);
       $comando->execute();
-      return $id;
+      return $ean;
     }
   }
 ?>

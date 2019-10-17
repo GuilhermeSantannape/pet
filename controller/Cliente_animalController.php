@@ -24,7 +24,7 @@ class Cliente_animalController{
     }
     public function inserir($request, $response, $args) {
         $var = $request->getParsedBody();
-        $cliente_animais = new Cleinte_animais(0, $var['desc_animal'], $var['$id_raca']);
+        $cliente_animais = new Cliente_animal( $var['id'], $var['$id_animal']);
     
         $dao = new Cliente_animalDAO;    
         $cliente_animais = $dao->inserir($cliente_animais);
@@ -37,7 +37,7 @@ class Cliente_animalController{
     public function atualizar($request, $response, $args) {
         $id = (int) $args['id'];
         $var = $request->getParsedBody();
-        $cliente_animais = new Cleinte_animais($id, $var['desc_animal']);
+        $cliente_animais = new Cliente_animal($id, $var['id_animal']);
     
         $dao = new Cliente_animalDAO;    
         $dao->atualizar($cliente_animais);

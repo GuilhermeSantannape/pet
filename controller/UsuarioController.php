@@ -54,6 +54,8 @@ class UsuarioController {
 
         if($token)
         {
+
+            echo $this->secretkey;
             try {
                 $decoded = JWT::decode($token, $this->secretkey, array('HS256'));
 
@@ -63,10 +65,11 @@ class UsuarioController {
             } catch(Exception $error) {
                 return $resp->withStatus(401);
             }
+            return $resp->withStatus(401);
+
         }
           
-        return $resp->withStatus(401);
-    }
+            }
 
 }
 ?>

@@ -64,7 +64,7 @@
 		    return new Animais(
                 $result->id_animal,
                 $result->id_raca,
-                    $result->nome_animal,);           
+                $result->nome_animal);           
         }
     }
 ?>

@@ -11,9 +11,9 @@ class ProdutoController {
     }
 
     public function buscarPorId($req, $resp, $args) {
-        $id = (int) $args["id"];
+        $ean = (int) $args["ean"];
         $dao = new ProdutoDao();
-        $produto = $dao->buscarPorId($id);
+        $produto = $dao->buscarPorId($ean);
         $resp = $resp->withJson($produto);
         $resp = $resp->withHeader("Content-type", "application/json");
         return $resp;
@@ -31,9 +31,9 @@ class ProdutoController {
     }
 
     public function atualizar($req, $resp, $args) {
-        $id = (int) $args["id"];
+        $ean = (int) $args["ean"];
         $var = $req->getParsedBody();
-        $produto = new Produto($id, $var["nome"], $var["preco"]);
+        $produto = new Produto($ean, $var["nome"], $var["preco"]);
         $dao = new ProdutoDAO();
         $dao->atualizar($produto);
         $resp = $resp->withJson($produto);
@@ -42,10 +42,10 @@ class ProdutoController {
     }
 
     public function deletar($req, $resp, $args) {
-        $id = (int) $args["id"];
+        $ean = (int) $args["ean"];
         $dao = new ProdutoDAO();
-        $produto = $dao->buscarPorId($id);
-        $dao->deletar($id);
+        $produto = $dao->buscarPorId($ean);
+        $dao->deletar($ean);
         $resp = $resp->withJson($produto);
         $resp = $resp->withHeader("Content-type", "application/json");
         return $resp;

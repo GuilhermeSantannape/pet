@@ -6,13 +6,18 @@
     {
         public function inserir(Cliente_animal $cliente_animais)
         {
-            $qInserir = "INSERT INTO cliente_animal(id, id) VALUES (:id, :id)";            
+            $qInserir = "INSERT INTO cliente_animal(id, id_animal) VALUES (:id, :id_animal)";            
             $pdo = PDOFactory::getConexao();
             $comando = $pdo->prepare($qInserir);
             $comando->bindParam(":id",$cliente_animais->id);
-            $comando->bindParam(":id_raca",$cliente_animais->id_raca);
+            $comando->bindParam(":id_animal",$cliente_animais->id_animal);
+            if($cliente_animais->id_animal=="null"){
+                return($response = $response->withStatus(304)
+            );
+
+            }
             $comando->execute();
-            $cliente_animais->id = $pdo->lastInsertid();
+     
             return $cliente_animais;
         }
 
@@ -43,10 +48,9 @@
     		$comando->execute();
             $cliente_animais=array();	
 		    while($row = $comando->fetch(PDO::FETCH_OBJ)){
-			   $cliente_animais[] = new Cleinte_animal(
+			   $cliente_animais[] = new Cliente_animal(
                 $row->id,
-                $row->id_animal,
-                $row->id_raca);
+                $row->id_animal);
             }
             return $cliente_animais;
         }
@@ -59,9 +63,9 @@
 		    $comando->bindParam ('id', $id);
 		    $comando->execute();
 		    $result = $comando->fetch(PDO::FETCH_OBJ);
-		    return new Cleinte_animal(
+		    return new Cliente_animal(
                 $result->id,
-                $result->id_animal,
+                $result->id_animal
                 );           
         }
     }

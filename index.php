@@ -5,6 +5,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 require_once './controller/ClienteController.php';
 require './controller/RacaController.php';
 require './controller/AnimaisController.php';
+require './controller/UsuarioController.php';
 require './controller/Cliente_animalController.php';
 
 require './vendor/autoload.php';
@@ -25,7 +26,7 @@ $app->group('/clientes', function(){
     $this->put('/{id:[0-9]+}','ClienteController:atualizar');
     $this->delete('/{id:[0-9]+}','ClienteController:deletar');
     
-});
+})->add('UsuarioController:validarToken');
 
 $app->group('/cliente_animal', function(){
 

@@ -1,12 +1,12 @@
 <?php
 class Produto {
 
-    public $id;
+    public $ean;
     public $nome;
     public $preco;
 
-    function __construct($id, $nome, $preco) {
-        $this->id = $id;
+    function __construct($ean, $nome, $preco) {
+        $this->ean = $ean;
         $this->nome = $nome;
         $this->preco = $preco;
     }
